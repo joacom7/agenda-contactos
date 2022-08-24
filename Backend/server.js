@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { contactsRouter } from './Backend/src/routers/contacts.router.js.js';
+import { contactsRouter } from './src/routes/contacts.router.js';
 
 const app = express();
 dotenv.config();
@@ -9,7 +9,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('../public')); 
+app.use(express.static('../F')); 
 
 /*---------------ROUTERS---------------*/
 

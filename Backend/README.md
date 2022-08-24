@@ -3,5 +3,5 @@
 
 Integrantes:
 * Gonzalo Perez
-* Lucas Silca
+* Lucas Silva
 * Joaquin Macias
