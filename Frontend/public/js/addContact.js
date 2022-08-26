@@ -1,31 +1,33 @@
+const containerForm = document.querySelector(".containerForm");
+const sendButton = document.querySelector("#sendButton");
 
-const contactPost = document.getElementById('contactPost')
-/* import saveContact from '../../../Backend/src/controllers/contacts.controllers' */
+sendButton.addEventListener('click', (e)=>{
+    e.preventDefault();
 
-const prueba = contactPost.addEventListener('click', $('#nameContact').focusout(function() {
-    let x = $(this).val();
-    alert(x);
-        // Recomiendo usar la consola en lugar de alerts
-    return x
-   }))
- prueba()
-/* contactPost.addEventListener('click', 
- () => {
-    const datos = contactosAgregar.value
-    console.log(datos)
-})
- */
-/* ()=>{
-    const datos = contactosAgregar.value
-    
-} */
-/* contactPost.addEventListener('click', ()=>{
-    const datos = contactosAgregar.value
-    return datos
-} )
+    let inputName = document.querySelector(".inputName").value;
+    let inputEmail = document.querySelector(".inputEmail").value;
+    let inputPhone = document.querySelector(".inputPhone").value;
 
-const addContactFunc = ()=>{
-    
+    const data = {
+        name: inputName,
+        email: inputEmail,
+        phone: inputPhone
+    };
 
-}  */
+    fetch('http://localhost:8080/api/contacts', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(resJSON => {
+        containerForm.innerHTML += `<span>${resJSON.msg}</span>`
+        inputName = "";
+        inputEmail = "";
+        inputPhone = "";
+    });
 
+});

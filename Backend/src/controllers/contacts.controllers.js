@@ -27,7 +27,7 @@ export const saveContact = async (req, res) =>{
         res.status(200).json({msg: `Contact ${name} was saved.`});
     }
     catch(error){
-        res.status(500).json({msg: "An error has ocurred. Please try again."});
+        res.status(500).json({msg: `An error has ocurred. Please try again. Error Data: ${error.message}.`});
     }
 
 };

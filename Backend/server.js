@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { contactsRouter } from './src/routes/contacts.router.js';
+import cors from 'cors';
 
 const app = express();
 dotenv.config();
@@ -9,7 +10,8 @@ dotenv.config();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('../F')); 
+app.use(express.static('../F'));
+app.use(cors());
 
 /*---------------ROUTERS---------------*/
 
